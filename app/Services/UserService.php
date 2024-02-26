@@ -24,30 +24,18 @@ class UserService
         ]);
     }
 
-    public function loginUser($email, $password)
+    public function loginUser($email, $password, $device)
     {
-        $credentials = [
-            'email' => $email,
-            'password' => $password
-        ];
-
        
-
-        if (Auth::attempt($credentials)) {
-            $auth = Auth::user();
-            $success = true;
-            $message = "Usuário Logado com Sucesso";
-        } else {
-            $success = false;
-            $message = "Não Autorizado";
+        $user = User::where('email', $email)->first();
+     
+        if (! $user || !Hash::check($password, $user->password)) {
+            throw ValidationException::withMessages([
+                'email' => ['Credenciais Incorretas.'],
+            ]);
         }
-
-        $response = [
-            'auth' => $auth,
-            'success' => $success,
-            'message' => $message
-        ];
-
-        return response()->json($response);
+        $token = $user->createToken($device)->plainTextToken;
+        return response()->json(['token' => $token,
+                                 'user' => $user]);
     }
 }

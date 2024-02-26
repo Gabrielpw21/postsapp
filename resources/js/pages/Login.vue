@@ -108,7 +108,7 @@ export default {
                         setInterval(() => {
                             window.location.href = "/load";
                             this.isLoggedin = true;
-                        }, 4000);
+                        }, 3000);
                     })
                     .catch(function (error) {
                         this.error = false;

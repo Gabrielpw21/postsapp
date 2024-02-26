@@ -35,16 +35,9 @@ class UserController extends Controller
             'device_name' => 'required',
         ]);
      
-        $user = User::where('email', $request->email)->first();
-     
-        if (! $user || !Hash::check($request->password, $user->password)) {
-            throw ValidationException::withMessages([
-                'email' => ['Credenciais Incorretas.'],
-            ]);
-        }
-        $token = $user->createToken($request->device_name)->plainTextToken;
-        return response()->json(['token' => $token,
-                                 'user' => $user]);
+        $login = $request->all();
+
+        return UserService::loginUser($login['email'], $login['password'], $login['device_name']);
     }
 
     public function logout(Request $request)

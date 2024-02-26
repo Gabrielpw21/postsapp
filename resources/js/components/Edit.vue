@@ -69,7 +69,7 @@ export default {
                     textPost: this.post,
                 })
                 .then((response) => {
-                    console.log(response.data);
+                    this.$router.push('/home')
                 });
         },
     },
@@ -79,7 +79,6 @@ export default {
             .get(`/api/posts/edit/${this.$route.params.id}`)
             .then((response) => {
                 this.post = response.data.textPost;
-                console.log(response.data);
             });
 
         this.$axios.get("api/user").then((response) => {

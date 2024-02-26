@@ -17,7 +17,7 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->string('textPost', 280);
             $table->bigInteger('user_id')->unsigned()->nullable();
-            $table->string('dateFormat')->nullable();
+            $table->string('dateFormat');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

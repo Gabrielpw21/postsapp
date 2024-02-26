@@ -17,8 +17,8 @@ Route::post('/login', [UserController::class, 'login']);
 Route::post('/logout', [UserController::class, 'logout'])->middleware('auth:sanctum');
 
 Route::get('/allPosts', [PostsController::class,'index']);
-
 Route::get('getPostByUserId/{id}', [PostsController::class,'getPostByUserId']);
+
 Route::group(['prefix' => 'posts','middleware' => 'auth:sanctum'], function() {
     Route::post('addPost', [PostsController::class,'addPost']);
     Route::post('update/{id}', [PostsController::class,'update']);
