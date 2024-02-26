@@ -23,8 +23,6 @@
                     Menu
                 </button>
                 <ul class="dropdown-menu">
-                    <router-link to="/" class="nav-item nav-link dropdown-item"
-                        >Página Inicial</router-link>
                     <router-link to="/home" class="nav-item nav-link dropdown-item">Minhas Publicações</router-link>
                     <router-link to="/add" class="nav-item nav-link dropdown-item">Adicionar Publicação</router-link>
                     <a class="nav-item nav-link" style="cursor: pointer" @click="logout">Sair</a>
