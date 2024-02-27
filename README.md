@@ -8,8 +8,9 @@ Configuração Local:
 Buildar componentes:
     npm i/npm install
     npm run watch/npm run dev/npm run prod
------------------------------------------------------------------------------------
 
+
+    
 *Meu objetivo com esse projeto foi deixar o código mais breve e enxuto possível.*
 
 *Em App/Services é onde está a maior parte do back-end que fiz deixando POO.*
